@@ -1,0 +1,89 @@
+name: flutter_week6_day3_lab
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.4
+  http: ^1.2.0
+  font_awesome_flutter: ^10.7.0
+  get_it: ^7.6.7
+  email_validator: '^2.1.16'
+  cached_network_image: ^3.3.1
+  image_picker: ^1.0.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+  fonts:
+    - family: PlayfairDisplay
+      fonts:
+        - asset: assets/fonts/PlayfairDisplay-Regular.ttf
+        - asset: assets/fonts/PlayfairDisplay-Black.ttf
+        - asset: assets\fonts\PlayfairDisplay-BlackItalic.ttf
+        - asset: assets\fonts\PlayfairDisplay-ExtraBold.ttf
+        - asset: assets\fonts\PlayfairDisplay-ExtraBoldItalic.ttf
+        - asset: assets\fonts\PlayfairDisplay-Medium.ttf
+        - asset: assets\fonts\PlayfairDisplay-MediumItalic.ttf
+        - asset: assets\fonts\PlayfairDisplay-SemiBold.ttf
+        - asset: assets/fonts/PlayfairDisplay-Bold.ttf
+        - asset: assets\fonts\PlayfairDisplay-SemiBoldItalic.ttf
+          weight: 700
+        - asset: assets/fonts/PlayfairDisplay-Italic.ttf
+          style: italic
+        - asset: assets/fonts/PlayfairDisplay-BoldItalic.ttf
+          weight: 700
+          style: italic
+    - family: WorkSans
+      fonts:
+        - asset: assets/fonts/WorkSans-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/WorkSans-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/WorkSans-Light.ttf
+          weight: 300
+        - asset: assets/fonts/WorkSans-Regular.ttf
+        - asset: assets/fonts/WorkSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/WorkSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/WorkSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/WorkSans-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/WorkSans-Black.ttf
+          weight: 900
+        - asset: assets/fonts/WorkSans-Italic.ttf
+          style: italic
+        - asset: assets/fonts/WorkSans-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/WorkSans-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/WorkSans-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/WorkSans-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/WorkSans-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/WorkSans-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/WorkSans-BlackItalic.ttf
+          weight: 900
+          style: italic

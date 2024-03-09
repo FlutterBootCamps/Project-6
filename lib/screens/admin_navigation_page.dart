@@ -14,6 +14,7 @@ class AdminNavigationPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => NavigationBloc(),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           scrolledUnderElevation: 0,
           leading: IconButton(

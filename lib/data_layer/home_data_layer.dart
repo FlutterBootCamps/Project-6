@@ -23,8 +23,8 @@ class HomeData {
   ];
 
   final List<Widget> adminPageList = [
-    const AdminCategoryPage(),
-    const AdminProductPage(),
+    AdminCategoryPage(),
+    AdminProductPage(),
     const AdminUserPage()
   ];
 

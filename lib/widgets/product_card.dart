@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_week6_day3_lab/bloc/basket_bloc.dart';
-import 'package:flutter_week6_day3_lab/bloc/product_bloc.dart';
 import 'package:flutter_week6_day3_lab/helpers/extensions/screen_helper.dart';
 import 'package:flutter_week6_day3_lab/models/product_model.dart';
 import 'package:flutter_week6_day3_lab/screens/product_details_page.dart';

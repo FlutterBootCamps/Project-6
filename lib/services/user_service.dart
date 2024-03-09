@@ -103,14 +103,11 @@ class UserService {
       if (response.statusCode == 201) {
         final photo =
             Photo.fromJson(json.decode(await response.stream.bytesToString()));
-        print(photo.location);
         return photo;
       }else {
-        print("Image could not be uploaded");
       throw const FormatException();
       }
     } catch (e) {
-      print("ERROR");
       throw const FormatException();
     }
   }
@@ -130,5 +127,39 @@ class UserService {
     print(request.body);
 
     return await json.decode(request.body)["isAvailable"];
+  }
+
+  Future<List<User>> getAllUsersList() async{
+
+    const url = "https://api.escuelajs.co/api/v1/users/";
+
+    final uri = Uri.parse(url);
+
+    try{
+      final response = await http.get(uri);
+      final List jsonList = await json.decode(response.body);
+      final List<User> userList = List.generate(jsonList.length, (index) {
+      return User.fromJson(jsonList[index]);
+    } );
+    return userList;
+
+    }catch(e){
+      throw const FormatException();
+    }
+  }
+
+  Future<User> getOneUser(int id) async{
+    String url = "https://api.escuelajs.co/api/v1/users/$id";
+
+    final uri = Uri.parse(url);
+
+    final response = await http.get(uri);
+
+    if (response.statusCode == 200){
+      final User user = User.fromJson(json.decode(response.body));
+      return user;
+    }else {
+      throw const FormatException();
+    }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_week6_day3_lab/bloc/admin_view_bloc.dart';
 import 'package:flutter_week6_day3_lab/bloc/basket_bloc.dart';
 import 'package:flutter_week6_day3_lab/bloc/product_bloc.dart';
 import 'package:flutter_week6_day3_lab/bloc/user_bloc.dart';
@@ -31,6 +32,9 @@ class MainApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => BasketBloc(),
+        ),
+        BlocProvider(
+          create: (context) => AdminViewBloc(),
         ),
       ],
       child: const MaterialApp(

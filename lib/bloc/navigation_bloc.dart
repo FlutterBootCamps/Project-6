@@ -13,10 +13,16 @@ class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
     });
 
     on<ChangePageEvent>(changePage);
+    on<ChangeAdminPageEvent>(changeAdminPage);
   }
 
   FutureOr<void> changePage(ChangePageEvent event, Emitter<NavigationState> emit) {
     locator.currentPageIndex = event.index;
+    emit(ShowCurrentPageState());
+  }
+
+  FutureOr<void> changeAdminPage(ChangeAdminPageEvent event, Emitter<NavigationState> emit) {
+    locator.currentAdminPageIndex = event.index;
     emit(ShowCurrentPageState());
   }
 }

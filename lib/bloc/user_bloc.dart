@@ -18,6 +18,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<LoginEvent>(login);
     on<ViewProfileEvent>(viewProfile);
     on<PickProfilePictureEvent>(pickProfilePicture);
+    on<UserSignoutEvent>(signout);
   }
 
   FutureOr<void> signup(SignupEvent event, Emitter<UserState> emit) async {
@@ -97,5 +98,15 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       locator.currentImagePath = imageUrl;
       emit(ImagePickedState(imagePath: locator.currentImagePath));
     }
+  }
+
+  FutureOr<void> signout(UserSignoutEvent event, Emitter<UserState> emit) {
+    locator.currentPageIndex = 0;
+    locator.currentBearerToken = "";
+    locator.currentImagePath = "https://www.nicepng.com/png/full/73-730154_open-default-profile-picture-png.png";
+    locator.categoryList = [];
+    locator.productList = [];
+    locator.cartList = [];
+    emit(UserSignedOutState(msg: "${event.name} Signed out, see you soon ${event.name}."));
   }
 }

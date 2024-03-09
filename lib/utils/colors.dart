@@ -9,3 +9,4 @@ const glassColor = Color(0x606D6D6D);
 const redColor = Colors.red;
 const greenColor = Colors.greenAccent;
 const productBgColor = Color(0xffF1F1F1);
+const noColor = Colors.transparent;

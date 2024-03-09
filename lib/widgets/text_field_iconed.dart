@@ -4,7 +4,7 @@ import 'package:flutter_week6_day3_lab/utils/colors.dart';
 class TextFieldIconed extends StatelessWidget {
   const TextFieldIconed({
     super.key,
-    required this.controller, required this.hintText, required this.label, required this.icon, this.readOnly = false, this.isObscured = false,
+    required this.controller, required this.hintText, required this.label, required this.icon, this.readOnly = false, this.isObscured = false, this.onEditingComplete, this.onChanged,
   });
 
   final TextEditingController controller;
@@ -13,10 +13,14 @@ class TextFieldIconed extends StatelessWidget {
   final Widget icon;
   final bool? readOnly;
   final bool? isObscured;
+  final Function()? onEditingComplete;
+  final Function(String text)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: onChanged,
+      onEditingComplete: onEditingComplete,
       enabled: !readOnly!,
       controller: controller,
       decoration: InputDecoration(

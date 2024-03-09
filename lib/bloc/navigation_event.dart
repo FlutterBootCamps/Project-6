@@ -8,3 +8,9 @@ final class ChangePageEvent extends NavigationEvent {
 
   ChangePageEvent({required this.index});
 }
+
+final class ChangeAdminPageEvent extends NavigationEvent {
+  final int index;
+
+  ChangeAdminPageEvent({required this.index});
+}

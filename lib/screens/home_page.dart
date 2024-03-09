@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_week6_day3_lab/bloc/product_bloc.dart';
 import 'package:flutter_week6_day3_lab/data_layer/home_data_layer.dart';
 import 'package:flutter_week6_day3_lab/helpers/extensions/screen_helper.dart';
-import 'package:flutter_week6_day3_lab/models/product_model.dart';
 import 'package:flutter_week6_day3_lab/utils/colors.dart';
 import 'package:flutter_week6_day3_lab/utils/fonts.dart';
 import 'package:flutter_week6_day3_lab/widgets/product_card.dart';
@@ -15,6 +14,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<ProductBloc>().add(GetAllProductsEvent());
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: BlocConsumer<ProductBloc, ProductState>(
         listener: (context, state) {
           if (state is DisplayProductsErrorState) {
@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
                               (index) => Center(
                                       child: ProductCard(
                                     product: state.allProductsList[index],
-                                    onAddTap: () {},
+                                    
                                   ))),
                         ],
                       ),

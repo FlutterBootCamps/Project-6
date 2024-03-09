@@ -18,3 +18,20 @@ final class DisplayProductsErrorState extends ProductState {
 
   DisplayProductsErrorState({required this.msg});
 }
+//------------------------------------------------------
+final class DisplaySearchedProductsLoadingState extends ProductState {
+
+}
+
+final class DisplaySearchedProductsState extends ProductState {
+  final List<ProductCard> productCardList;
+
+  DisplaySearchedProductsState({required this.productCardList});
+}
+
+final class DisplaySearchedProductsErrorState extends ProductState {
+  final String msg;
+
+  DisplaySearchedProductsErrorState({required this.msg});
+}
+

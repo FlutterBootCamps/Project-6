@@ -28,3 +28,9 @@ final class ViewProfileEvent extends UserEvent {
 
 final class PickProfilePictureEvent extends UserEvent {
 }
+
+final class UserSignoutEvent extends UserEvent {
+  final String name;
+
+  UserSignoutEvent({required this.name});
+}

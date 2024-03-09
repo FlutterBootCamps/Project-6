@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter_week6_day3_lab/models/category_model.dart';
 import 'package:flutter_week6_day3_lab/models/product_model.dart';
 import 'package:http/http.dart' as http;
 

@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_week6_day3_lab/bloc/basket_bloc.dart';
+import 'package:flutter_week6_day3_lab/bloc/product_bloc.dart';
 import 'package:flutter_week6_day3_lab/helpers/extensions/screen_helper.dart';
 import 'package:flutter_week6_day3_lab/models/product_model.dart';
+import 'package:flutter_week6_day3_lab/screens/product_details_page.dart';
 import 'package:flutter_week6_day3_lab/utils/colors.dart';
 import 'package:flutter_week6_day3_lab/utils/fonts.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
-    super.key, required this.product, this.onProductTap, this.onAddTap,
+    super.key, required this.product,
   });
   final Product product;
-  final Function()? onProductTap;
-  final Function()? onAddTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onProductTap,
+      onTap: (){
+        context.push(context, ProductDetailsPage(product: product,), true);
+      },
       child: Container(
         padding: const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 8),
         width: 170,
@@ -46,7 +50,9 @@ class ProductCard extends StatelessWidget {
             Row(
               children: [
                 Expanded(child: Text("${product.price}\$", style: const TextStyle(color: blackColor, fontFamily: playFairFont, fontSize: 18, fontWeight: FontWeight.bold, ), maxLines: 1,)),
-                MaterialButton(onPressed: onAddTap, color: blackColor, minWidth: 40,padding: EdgeInsets.zero, height: 20, child: const Text("Add", style: TextStyle(color: whiteColor, fontFamily: workSansFont, fontSize: 14, fontWeight: FontWeight.bold),),)
+                MaterialButton(onPressed: (){
+                  context.read<BasketBloc>().add(AddProductToCartEvent(product: product));
+                }, color: blackColor, minWidth: 40,padding: EdgeInsets.zero, height: 20, child: const Text("Add", style: TextStyle(color: whiteColor, fontFamily: workSansFont, fontSize: 14, fontWeight: FontWeight.bold),),)
               ],
             )
           ],

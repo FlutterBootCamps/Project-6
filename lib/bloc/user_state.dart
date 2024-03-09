@@ -60,3 +60,9 @@ final class ImageNotPickedState extends UserState {
 
   ImageNotPickedState({required this.msg});
 }
+
+final class UserSignedOutState extends UserState {
+  final String msg;
+
+  UserSignedOutState({required this.msg});
+}

@@ -11,9 +11,9 @@ LOGIN PAGE
 
 HOME PAGE
 
-<img width="260" alt="Screenshot 1445-08-29 at 4 30 06 AM" src="https://github.com/maramnaif/Project-6/assets/123784913/3e2a3907-b694-4b84-ac0f-1ef4b53f865b">
+<img width="254" alt="Screenshot 1445-08-29 at 9 16 14 AM" src="https://github.com/maramnaif/Project-6/assets/123784913/95ed7a90-9163-41b4-b77a-026531627d9c">
+<img width="254" alt="Screenshot 1445-08-29 at 9 16 46 AM" src="https://github.com/maramnaif/Project-6/assets/123784913/46a7ab4c-c2d3-43f9-a852-1677ee494be0">
 
-<img width="257" alt="Screenshot 1445-08-29 at 4 30 32 AM" src="https://github.com/maramnaif/Project-6/assets/123784913/920b9ee4-1325-47d8-8914-73f97631ed73">
 
 ADD PRODUCT
 

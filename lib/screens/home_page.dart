@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                       ]),
                   SizedBox(
                     width: context.getWidth(context),
-                    height: context.getHeight(context) * 0.7,
+                    height: context.getHeight(context) * 0.75,
                     child: TabBarView(
                       children: [
                       GridView.count(

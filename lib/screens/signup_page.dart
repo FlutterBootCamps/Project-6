@@ -134,24 +134,26 @@ class SignupPage extends StatelessWidget {
                     const SizedBox(
                       height: 32,
                     ),
-                    RichText(
-                        text: TextSpan(
-                            text: "You already have an account? ",
-                            style: const TextStyle(
-                                color: blackColor, fontFamily: workSansFont),
-                            children: [
-                          TextSpan(
-                              text: "Login",
+                    Center(
+                      child: RichText(
+                          text: TextSpan(
+                              text: "You already have an account? ",
                               style: const TextStyle(
-                                color: blackColor,
-                                fontFamily: workSansFont,
-                                decoration: TextDecoration.underline,
-                              ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  context.push(context, LoginPage(), false);
-                                })
-                        ]))
+                                  color: blackColor, fontFamily: workSansFont),
+                              children: [
+                            TextSpan(
+                                text: "Login",
+                                style: const TextStyle(
+                                  color: blackColor,
+                                  fontFamily: workSansFont,
+                                  decoration: TextDecoration.underline,
+                                ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    context.push(context, LoginPage(), false);
+                                  })
+                          ])),
+                    )
                   ],
                 );
               },

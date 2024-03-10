@@ -1,10 +1,9 @@
-# Flutter API Integration Project
-- Create a Flutter project using a given API "**Platzi Fake Store API**", utilizing 13 endpoints from the provided ones.
-- Focus on crafting a polished user interface with excellent appearance.
-- Ensure to apply all past concepts in Dart & Flutter, and adhering to best practices while working on the project.
-- Additionally, ensure to include a comprehensive README file detailing project setup, API integration, and any additional information for users.
-
-## Deadline:
-10-Mar-2024, 9:59 AM
-
-**Keep up the great work, and let your creativity shine!** ✨
+![4](https://github.com/mohammed0172000/Project-6/assets/82112256/1bb02069-7bd1-4575-b6a4-bf9ad7a02170)
+![5](https://github.com/mohammed0172000/Project-6/assets/82112256/b3f2893f-406d-4fce-b8dc-a1661b13b380)
+![6](https://github.com/mohammed0172000/Project-6/assets/82112256/a0470d3d-f25f-404f-8b43-333f07d92112)
+![3](https://github.com/mohammed0172000/Project-6/assets/82112256/2b7e5f48-61cc-43b6-9a5a-ef3b2cf31c4b)
+![7](https://github.com/mohammed0172000/Project-6/assets/82112256/66e287b4-6fea-4bb2-b6d3-690117b3bfa1)
+![3](https://github.com/mohammed0172000/Project-6/assets/82112256/72460bc3-c191-4951-a2f1-20568b3a3c5f)
+![8](https://github.com/mohammed0172000/Project-6/assets/82112256/8285dea5-11e8-4c87-b363-b82238b8e721)
+![2](https://github.com/mohammed0172000/Project-6/assets/82112256/39b11de5-60c7-48d7-a950-39cd949a39b9)
+![1](https://github.com/mohammed0172000/Project-6/assets/82112256/d788ac6a-f0ec-4d1e-aff3-f05a75ad5e14)

@@ -6,6 +6,7 @@ import 'package:flutter_week6_day3_lab/models/product_model.dart';
 import 'package:flutter_week6_day3_lab/models/user_model.dart';
 import 'package:flutter_week6_day3_lab/services/category_service.dart';
 import 'package:flutter_week6_day3_lab/services/product_service.dart';
+import 'package:flutter_week6_day3_lab/services/user_service.dart';
 import 'package:meta/meta.dart';
 
 part 'admin_view_event.dart';
@@ -25,6 +26,9 @@ class AdminViewBloc extends Bloc<AdminViewEvent, AdminViewState> {
     on<ShowOneProductEvent>(showOneProduct);
     on<AddProductEvent>(addProduct);
     on<EditProductEvent>(editProduct);
+
+    on<ShowAllUsersEvent>(showAllUsers);
+    on<ShowOneUserEvent>(showOneUser);
   }
 
   FutureOr<void> showAllCategories(ShowAllCategoriesEvent event, Emitter<AdminViewState> emit) async{
@@ -98,11 +102,11 @@ class AdminViewBloc extends Bloc<AdminViewEvent, AdminViewState> {
     }
   }
 
-  FutureOr<void> addProduct(AddProductEvent event, Emitter<AdminViewState> emit) {
+  FutureOr<void> addProduct(AddProductEvent event, Emitter<AdminViewState> emit) async{
     if (event.title.trim().isNotEmpty && event.price.toString().trim().isNotEmpty && event.description.trim().isNotEmpty && event.categoryId.toString().trim().isNotEmpty){
       try {
-        ProductService().addProduct(title: event.title, price: event.price, description: event.description, categoryId: event.categoryId, imageUrl: event.image);
-        emit(AddedEditiedCategoryState(msg: "${event.title} product has been added"));
+        await ProductService().addProduct(title: event.title, price: event.price, description: event.description, categoryId: event.categoryId, imageUrl: event.image);
+        emit(AddedEditiedProductState(msg: "${event.title} product has been added"));
       } catch (e) {
         emit(ErrorState(msg: "Our services are currntly unavilable, please try again later..."));
       }
@@ -111,16 +115,38 @@ class AdminViewBloc extends Bloc<AdminViewEvent, AdminViewState> {
     }
   }
 
-  FutureOr<void> editProduct(EditProductEvent event, Emitter<AdminViewState> emit) {
+  FutureOr<void> editProduct(EditProductEvent event, Emitter<AdminViewState> emit) async{
     if(event.title.trim().isNotEmpty && event.price.toString().trim().isNotEmpty && event.image.trim().isNotEmpty){
       try {
-        ProductService().editProduct(title: event.title, price: event.price, imageUrl: event.image, id: event.id);
+        await ProductService().editProduct(title: event.title, price: event.price, imageUrl: event.image, id: event.id);
         emit(AddedEditiedProductState(msg: "${event.title} product has been edited."));
       } catch (e) {
-        emit(ErrorState(msg: "Our services are currntly unavilable, please try again later..."));   
+        emit(ErrorState(msg: "Error in editing this product."));   
       }
     }else {
       emit(ErrorState(msg: "Please fill all text fields."));
+    }
+  }
+
+  FutureOr<void> showAllUsers(ShowAllUsersEvent event, Emitter<AdminViewState> emit) async{
+    emit(LoadingState());
+
+    try {
+      List<User> userList = await UserService().getAllUsersList();
+      emit(ShowingUsersState(userList: userList));
+    } catch (e) {
+      emit(ErrorState(msg: "Error in getting all Users"));
+    }
+  }
+
+  FutureOr<void> showOneUser(ShowOneUserEvent event, Emitter<AdminViewState> emit) async{
+    emit(LoadingState());
+
+    try {
+      User user = await UserService().getOneUser(event.id);
+      emit(ShowingOneUserState(user: user));
+    } catch (e) {
+      emit(ErrorState(msg: "No user found with this id"));
     }
   }
 }

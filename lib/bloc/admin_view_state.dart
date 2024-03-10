@@ -35,6 +35,12 @@ final class ShowingOneProductState extends AdminViewState {
   ShowingOneProductState({required this.product});
 }
 
+final class ShowingOneUserState extends AdminViewState {
+  final User user;
+
+  ShowingOneUserState({required this.user});
+}
+
 final class LoadingState extends AdminViewState {
 
 }

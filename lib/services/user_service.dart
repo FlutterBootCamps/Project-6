@@ -14,22 +14,24 @@ class UserService {
     const url = 'https://api.escuelajs.co/api/v1/users/';
 
     final uri = Uri.parse(url);
-     var user = {};
-    if (path == "https://www.nicepng.com/png/full/73-730154_open-default-profile-picture-png.png"){
+    var user = {};
+    if (path ==
+        "https://www.nicepng.com/png/full/73-730154_open-default-profile-picture-png.png") {
       user = {
-      "name": name,
-      "email": email,
-      "password": password,
-      "avatar": "https://www.nicepng.com/png/full/73-730154_open-default-profile-picture-png.png",
-    };
-    }else {
+        "name": name,
+        "email": email,
+        "password": password,
+        "avatar":
+            "https://www.nicepng.com/png/full/73-730154_open-default-profile-picture-png.png",
+      };
+    } else {
       Photo photo = await uploadPhoto(path);
       user = {
-      "name": name,
-      "email": email,
-      "password": password,
-      "avatar": photo.location,
-    };
+        "name": name,
+        "email": email,
+        "password": password,
+        "avatar": photo.location,
+      };
     }
 
     final request = await http.post(
@@ -82,8 +84,6 @@ class UserService {
     final response = await http.get(uri, headers: headers);
 
     if (response.statusCode == 200) {
-      print(response.statusCode);
-      print(response);
       final User user = User.fromJson(json.decode(response.body));
       return user;
     } else {
@@ -104,8 +104,8 @@ class UserService {
         final photo =
             Photo.fromJson(json.decode(await response.stream.bytesToString()));
         return photo;
-      }else {
-      throw const FormatException();
+      } else {
+        throw const FormatException();
       }
     } catch (e) {
       throw const FormatException();
@@ -113,7 +113,7 @@ class UserService {
   }
 
   // This service isn't working correctly from the API itself, it always returns false even if the email is available.
-  Future<bool> isAvailable(String email) async{
+  Future<bool> isAvailable(String email) async {
     const url = "https://api.escuelajs.co/api/v1/users/is-available";
 
     final uri = Uri.parse(url);
@@ -129,36 +129,61 @@ class UserService {
     return await json.decode(request.body)["isAvailable"];
   }
 
-  Future<List<User>> getAllUsersList() async{
-
+  Future<List<User>> getAllUsersList() async {
     const url = "https://api.escuelajs.co/api/v1/users/";
 
     final uri = Uri.parse(url);
 
-    try{
+    try {
       final response = await http.get(uri);
       final List jsonList = await json.decode(response.body);
       final List<User> userList = List.generate(jsonList.length, (index) {
-      return User.fromJson(jsonList[index]);
-    } );
-    return userList;
-
-    }catch(e){
+        return User.fromJson(jsonList[index]);
+      });
+      return userList;
+    } catch (e) {
       throw const FormatException();
     }
   }
 
-  Future<User> getOneUser(int id) async{
+  Future<User> getOneUser(int id) async {
     String url = "https://api.escuelajs.co/api/v1/users/$id";
 
     final uri = Uri.parse(url);
 
     final response = await http.get(uri);
 
-    if (response.statusCode == 200){
+    if (response.statusCode == 200) {
       final User user = User.fromJson(json.decode(response.body));
       return user;
-    }else {
+    } else {
+      throw const FormatException();
+    }
+  }
+
+  Future<void> editUser(
+      {required String bearerToken,
+      required int id,
+      required String name}) async {
+    String url = "https://api.escuelajs.co/api/v1/users/$id";
+
+    final uri = Uri.parse(url);
+
+    final headers = {
+      'Authorization': 'Bearer $bearerToken',
+      'Content-Type': 'application/json',
+    };
+
+    final user = {"name": name};
+
+    final request = await http.put(uri, headers: headers, body: jsonEncode(user));
+    print(request.statusCode);
+    print(request);
+
+    if (request.statusCode == 200) {
+      print(request.statusCode);
+      print(request);
+    } else {
       throw const FormatException();
     }
   }

@@ -4,10 +4,6 @@ import 'package:flutter_week6_day3_lab/bloc/admin_view_bloc.dart';
 import 'package:flutter_week6_day3_lab/bloc/basket_bloc.dart';
 import 'package:flutter_week6_day3_lab/bloc/product_bloc.dart';
 import 'package:flutter_week6_day3_lab/bloc/user_bloc.dart';
-import 'package:flutter_week6_day3_lab/screens/admin_navigation_page.dart';
-import 'package:flutter_week6_day3_lab/screens/home_page.dart';
-import 'package:flutter_week6_day3_lab/screens/navigation_page.dart';
-import 'package:flutter_week6_day3_lab/screens/product_details_page.dart';
 import 'package:flutter_week6_day3_lab/screens/signup_page.dart';
 import 'package:flutter_week6_day3_lab/utils/setup.dart';
 
@@ -37,8 +33,8 @@ class MainApp extends StatelessWidget {
           create: (context) => AdminViewBloc(),
         ),
       ],
-      child: const MaterialApp(
-          debugShowCheckedModeBanner: false, home: AdminNavigationPage()),
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false, home: SignupPage()),
     );
   }
 }

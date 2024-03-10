@@ -76,19 +76,19 @@ class ProductService {
 
     final Map<String, dynamic> product = {
       "title": title,
-      "price": price.toString(),
+      "price": price,
       "images": [imageUrl],
     };
 
-    final request = await http.put(uri, headers: <String, String>{
+    final http.Response request = await http.put(uri,headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       }, body: jsonEncode(product));
 
-    // final response = await json.decode(request.body);
-    print(request.statusCode);
+    final response = await json.decode(request.body);
+    print(response);
     if (request.statusCode == 200) {
       print(request.statusCode);
-      // print(response);
+      print(response);
     } else {
       throw const FormatException();
     }

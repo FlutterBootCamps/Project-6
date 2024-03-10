@@ -19,6 +19,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<ViewProfileEvent>(viewProfile);
     on<PickProfilePictureEvent>(pickProfilePicture);
     on<UserSignoutEvent>(signout);
+    on<UserEditEvent>(editUser);
   }
 
   FutureOr<void> signup(SignupEvent event, Emitter<UserState> emit) async {
@@ -108,5 +109,18 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     locator.productList = [];
     locator.cartList = [];
     emit(UserSignedOutState(msg: "${event.name} Signed out, see you soon ${event.name}."));
+  }
+
+  FutureOr<void> editUser(UserEditEvent event, Emitter<UserState> emit) async{
+    if(event.name.isNotEmpty){
+      try {
+        await UserService().editUser(bearerToken: event.bearerToken, id: event.id, name: event.name);
+        emit(UserEditState(msg: "Name has been changed to ${event.name}"));
+      } catch (e) {
+        emit(UserEditErrorState(msg: "There's a problem with our service, please try again later..."));
+      }
+    }else {
+      emit(UserEditErrorState(msg: "Please fill the name textfield"));
+    }
   }
 }

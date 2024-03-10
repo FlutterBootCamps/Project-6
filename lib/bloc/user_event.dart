@@ -34,3 +34,11 @@ final class UserSignoutEvent extends UserEvent {
 
   UserSignoutEvent({required this.name});
 }
+
+final class UserEditEvent extends UserEvent {
+  final String bearerToken;
+  final int id;
+  final String name;
+
+  UserEditEvent({required this.bearerToken, required this.id, required this.name});
+}

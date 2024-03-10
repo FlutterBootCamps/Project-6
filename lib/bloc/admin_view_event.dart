@@ -21,6 +21,12 @@ final class ShowOneProductEvent extends AdminViewEvent {
   ShowOneProductEvent({required this.id});
 }
 
+final class ShowOneUserEvent extends AdminViewEvent {
+  final int id;
+
+  ShowOneUserEvent({required this.id});
+}
+
 final class AddCategoryEvent extends AdminViewEvent {
   final String text;
 

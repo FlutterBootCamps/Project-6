@@ -3,15 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_week6_day3_lab/bloc/admin_view_bloc.dart';
 import 'package:flutter_week6_day3_lab/helpers/extensions/screen_helper.dart';
-import 'package:flutter_week6_day3_lab/models/product_model.dart';
 import 'package:flutter_week6_day3_lab/utils/colors.dart';
 import 'package:flutter_week6_day3_lab/utils/fonts.dart';
 import 'package:flutter_week6_day3_lab/widgets/add_button.dart';
-import 'package:flutter_week6_day3_lab/widgets/bottom_button.dart';
 import 'package:flutter_week6_day3_lab/widgets/modify_product_bottom_sheet.dart';
 import 'package:flutter_week6_day3_lab/widgets/product_bar.dart';
 import 'package:flutter_week6_day3_lab/widgets/text_field_iconed.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // ignore: must_be_immutable
 class AdminProductPage extends StatelessWidget {

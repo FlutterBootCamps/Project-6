@@ -82,7 +82,7 @@ class ModifyProductBottomSheet extends StatelessWidget {
                     title: titleController.text,
                     id: product!.id,
                     price: (priceController.text.trim().isNotEmpty) ? int.parse(priceController.text) : 0,
-                    image: "https://api.lorem.space/image/${titleController.text}?w=150&h=220"));
+                    image: product!.images[0]));
                 context.read<AdminViewBloc>().add(ShowAllProductsEvent());
                 Navigator.pop(context);
               } else {

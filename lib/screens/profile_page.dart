@@ -2,12 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_week6_day3_lab/bloc/user_bloc.dart';
-import 'package:flutter_week6_day3_lab/data_layer/home_data_layer.dart';
 import 'package:flutter_week6_day3_lab/helpers/extensions/screen_helper.dart';
 import 'package:flutter_week6_day3_lab/screens/admin_navigation_page.dart';
 import 'package:flutter_week6_day3_lab/screens/login_page.dart';
 import 'package:flutter_week6_day3_lab/utils/colors.dart';
 import 'package:flutter_week6_day3_lab/utils/fonts.dart';
+import 'package:flutter_week6_day3_lab/widgets/modify_user_bottom_sheet.dart';
 import 'package:flutter_week6_day3_lab/widgets/text_field_iconed.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -20,9 +20,6 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context
-        .read<UserBloc>()
-        .add(ViewProfileEvent(bearerToken: locator.currentBearerToken));
     return Scaffold(
         appBar: AppBar(
           actions: [
@@ -83,6 +80,10 @@ class ProfilePage extends StatelessWidget {
                   Navigator.pop(context);
                 }else if (state is UserSignedOutState){
                   context.showSuccessSnackBar(context, state.msg);
+                } else if(state is UserEditState){
+                  context.showSuccessSnackBar(context, state.msg);
+                }else if (state is UserEditErrorState) {
+                  context.showErrorSnackBar(context, state.msg);
                 }
               },
               builder: (context, state) {
@@ -110,15 +111,29 @@ class ProfilePage extends StatelessWidget {
                       const SizedBox(
                         height: 32,
                       ),
-                      TextFieldIconed(
-                        controller: nameController,
-                        hintText: "",
-                        label: "Name",
-                        icon: const Icon(
-                          Icons.person,
-                          color: blackColor,
-                        ),
-                        readOnly: true,
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFieldIconed(
+                              controller: nameController,
+                              hintText: "",
+                              label: "Name",
+                              icon: const Icon(
+                                Icons.person,
+                                color: blackColor,
+                              ),
+                              readOnly: true,
+                            ),
+                          ),
+                          const SizedBox(width: 16,),
+                          IconButton(onPressed: (){
+                            TextEditingController nameEditController = TextEditingController();
+                            nameEditController.text = state.user.name;
+                            showModalBottomSheet(context: context, builder: (context) {
+                              return ModifyUserBottomSheet(nameController: nameEditController, user: state.user);
+                            },);
+                          }, icon: const Icon(Icons.edit, color: blackColor,))
+                        ],
                       ),
                       const SizedBox(
                         height: 16,

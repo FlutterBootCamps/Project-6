@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_week6_day3_lab/bloc/basket_bloc.dart';
 import 'package:flutter_week6_day3_lab/bloc/navigation_bloc.dart';
+import 'package:flutter_week6_day3_lab/bloc/user_bloc.dart';
 import 'package:flutter_week6_day3_lab/data_layer/home_data_layer.dart';
 import 'package:flutter_week6_day3_lab/helpers/extensions/screen_helper.dart';
 import 'package:flutter_week6_day3_lab/screens/profile_page.dart';
@@ -38,6 +39,9 @@ class NavigationPage extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {
+                  context
+        .read<UserBloc>()
+        .add(ViewProfileEvent(bearerToken: locator.currentBearerToken));
                   context.push(context, ProfilePage(), true);
                 },
                 icon: const FaIcon(

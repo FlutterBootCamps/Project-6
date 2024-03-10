@@ -66,3 +66,15 @@ final class UserSignedOutState extends UserState {
 
   UserSignedOutState({required this.msg});
 }
+
+final class UserEditState extends UserState {
+  final String msg;
+  
+  UserEditState({required this.msg});
+}
+
+final class UserEditErrorState extends UserState {
+  final String msg;
+  
+  UserEditErrorState({required this.msg});
+}

@@ -14,7 +14,7 @@ import 'package:image_picker/image_picker.dart';
 
 class HomeData {
   int currentAdminPageIndex = 0;
-  int currentPageIndex = 2;
+  int currentPageIndex = 0;
 
   final List<Widget> pageList = [
     const HomePage(),
@@ -25,7 +25,7 @@ class HomeData {
   final List<Widget> adminPageList = [
     AdminCategoryPage(),
     AdminProductPage(),
-    const AdminUserPage()
+    AdminUserPage()
   ];
 
   String currentBearerToken = "";
